@@ -23,7 +23,7 @@ class Scraper
     doc = Nokogiri::HTML(open(profile_url))
     
     hash = {}
-    
+    # binding.pry
    social_array = doc.css(".social-icon-container a").collect { |n|
       n.attribute("href").value
     }
@@ -34,10 +34,10 @@ class Scraper
         hash[:linkedin]= s
       elsif s.include?("github")
         hash[:github] = s
-      elsif s.include?("youtube")
-        hash[:youtube] = s
-      elsif s.include?("facebook")
-        hash[:facebook] = s
+      # elsif s.include?("youtube")
+      #   hash[:youtube] = s
+      # elsif s.include?("facebook")
+      #   hash[:facebook] = s
       else hash[:blog] = s
       end
     end
